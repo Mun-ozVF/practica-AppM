@@ -1,4 +1,4 @@
-const terminoBusqueda = 'Programación'; //termino que deseas buscar
+const terminoBusqueda = 'System of a Down'; //termino que deseas buscar
 const url =
 `https://es.wikipedia.org/w/api.php?action=query&list=search&srsearch=${terminoBusqueda}&format=json&origin=*`;
 
@@ -13,12 +13,13 @@ async function buscarEnWikipedia() {
 
         if(resultados.length > 0) {
             document.getElementById('resultado').textContent = `Resultados de Busqueda para "${terminoBusqueda}":`;
+            const listaResultados = document.getElementById('listaResultados'); 
+
 
             //recorrer los resultados y crear una lista de articulos
             resultados.forEach(resultado => {
                 const li = document.createElement('li');
-                li.innerHTML = `<a
-                href="https://es.wikipedia.org/wiki/${resultado.title}"target="_blank">${resultado.title} </a> - ${resultado.snippet}`;
+                li.innerHTML = `<a href="https://es.wikipedia.org/wiki/${resultado.title}"target="_blank">${resultado.title} </a> - ${resultado.snippet}`;
                 listaResultados.appendChild(li);
             });
         } else {
